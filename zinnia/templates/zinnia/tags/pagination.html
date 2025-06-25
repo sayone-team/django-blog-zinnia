@@ -2,7 +2,9 @@
 <nav>
   <ul class="paginator">
     <li class="index">
-      {% blocktrans with current_page=page.number total_page=page.paginator.num_pages %}Page {{ current_page }} of {{ total_page }}{% endblocktrans %}
+      {% blocktrans with current_page=page.number total_page=page.paginator.num_pages %}
+        Page {{ current_page }} of {{ total_page }}
+      {% endblocktrans %}
     </li>
 
     {% if page.has_previous %}
@@ -13,26 +15,26 @@
     {% endif %}
 
     {% for page_number in begin %}
-    <li class="page{% ifequal page.number page_number %} current{% endifequal %}">
-      {% ifequal page.number page_number %}
-      {{ page_number }}
+    <li class="page{% if page.number == page_number %} current{% endif %}">
+      {% if page.number == page_number %}
+        {{ page_number }}
       {% else %}
-      <a href="?page={{ page_number }}{{ GET_string }}"
-         title="{% trans "Entries page" %} {{ page_number }}">{{ page_number }}</a>
-      {% endifequal%}
+        <a href="?page={{ page_number }}{{ GET_string }}"
+           title="{% trans "Entries page" %} {{ page_number }}">{{ page_number }}</a>
+      {% endif %}
     </li>
     {% endfor %}
 
     {% if middle %}
     <li class="ellipsis">&hellip;</li>
     {% for page_number in middle %}
-    <li class="page{% ifequal page.number page_number %} current{% endifequal %}">
-      {% ifequal page.number page_number %}
-      {{ page_number }}
+    <li class="page{% if page.number == page_number %} current{% endif %}">
+      {% if page.number == page_number %}
+        {{ page_number }}
       {% else %}
-      <a href="?page={{ page_number }}{{ GET_string }}"
-         title="{% trans "Entries page" %} {{ page_number }}">{{ page_number }}</a>
-      {% endifequal%}
+        <a href="?page={{ page_number }}{{ GET_string }}"
+           title="{% trans "Entries page" %} {{ page_number }}">{{ page_number }}</a>
+      {% endif %}
     </li>
     {% endfor %}
     {% endif %}
@@ -40,13 +42,13 @@
     {% if end %}
     <li class="ellipsis">&hellip;</li>
     {% for page_number in end %}
-    <li class="page{% ifequal page.number page_number %} current{% endifequal %}">
-      {% ifequal page.number page_number %}
-      {{ page_number }}
+    <li class="page{% if page.number == page_number %} current{% endif %}">
+      {% if page.number == page_number %}
+        {{ page_number }}
       {% else %}
-      <a href="?page={{ page_number }}{{ GET_string }}"
-         title="{% trans "Entries page" %} {{ page_number }}">{{ page_number }}</a>
-      {% endifequal%}
+        <a href="?page={{ page_number }}{{ GET_string }}"
+           title="{% trans "Entries page" %} {{ page_number }}">{{ page_number }}</a>
+      {% endif %}
     </li>
     {% endfor %}
     {% endif %}
